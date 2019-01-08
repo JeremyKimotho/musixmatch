@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  base_url: ` https://api.musixmatch.com/ws/1.1/`,
+  api_key: `&apikey=d673c5d2a6ffc9e8b1eedbaf137810f3`
 };
 
 /*

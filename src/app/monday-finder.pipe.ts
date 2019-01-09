@@ -9,6 +9,8 @@ export class MondayFinderPipe implements PipeTransform {
     let dateToday = new Date();
     let day = dateToday.getDay();
     let diff = dateToday.getDate() - day + (day == 0?-6 : 1);
-    return new Date(dateToday.setDate(diff));
+    let inSeconds = dateToday.setDate(diff);
+    let final = (new Date(inSeconds)).toDateString()
+    return final;
   }
 }

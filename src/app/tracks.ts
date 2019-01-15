@@ -1,4 +1,4 @@
 export class Tracks {
-  constructor(public track_name: string, public artist_name: string){}
+  constructor(public rank:number, public track_name: string, public artist_name: string, public image_path: string){}
 }
 

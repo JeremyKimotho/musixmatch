@@ -1,3 +1,11 @@
-<p>
-  tracks works!
-</p>
+<div class="row">
+  <p>{{message}} {{Jeremy|mondayFinder}}</p>
+</div>
+<div class="row">
+  <div *ngFor="let track of tracks">
+    <p>Name:{{track.track_name}}</p>
+    <p>Artist:{{track.artist_name}}</p>
+    <p>Rank:{{track.rank}}</p>
+    <p>Image:{{track.image_path}}</p>
+  </div>
+</div>

@@ -22,52 +22,22 @@ export class SongsService {
     artist_name: any
     }
     let promise = new Promise((resolve, reject) => {
-      this.http.get<ApiResponse>(environment.base_url + environment.worldwide + '1' + environment.api_key).toPromise().then(response => {
+      this.http.get<ApiResponse>(environment.base_url + environment.worldwide + environment.api_key).toPromise().then(response => {
         response.tracks['track'].forEach(element => {
-          if(this.tracks.length>=50){
-            let promise = new Promise((resolve, reject) =>{
-              this.http.get<ApiResponse>(environment.base_url + environment.worldwide + '2' + environment.api_key).toPromise().then(response =>{
-                response.tracks['track'].forEach(element =>{
-                  if (element.name && element.artist.name) {
-                    let song = new Tracks(0, '', '', '')
-                    this.rank += 1
-                    song.rank = this.rank
-                    song.track_name = element.name
-                    song.artist_name = element.artist.name
-                    let i_array = element.image
-                    for (let i in i_array) {
-                      if (i_array[i].size == 'extralarge') {
-                        song.image_path = i_array[i]['#text']
-                      }
-                    }
-                    this.tracks.push(song)
-                    console.log('New Song P2')
-                  }
-                })
-                resolve()
-              },
-              err => {
-                console.log('Nigga not found page 2')
-                reject(err);
-                })
-            })
-            return promise
-          }else{
-            if (element.name && element.artist.name) {
-              let song = new Tracks(0, '', '', '')
-              this.rank += 1
-              song.rank = this.rank
-              song.track_name = element.name
-              song.artist_name = element.artist.name
-              let i_array = element.image
-              for (let i in i_array) {
-                if (i_array[i].size == 'extralarge') {
-                  song.image_path = i_array[i]['#text']
-                }
+          if (element.name && element.artist.name) {
+            let song = new Tracks(0, '', '', '')
+            this.rank += 1
+            song.rank = this.rank
+            song.track_name = element.name
+            song.artist_name = element.artist.name
+            let i_array = element.image
+            for (let i in i_array) {
+              if (i_array[i].size == 'extralarge') {
+                song.image_path = i_array[i]['#text']
               }
-              this.tracks.push(song)
-              console.log('New Song')
             }
+            this.tracks.push(song)
+            console.log('New Song')
           }
         })
         resolve()
@@ -81,6 +51,44 @@ export class SongsService {
     this.tracks.length = 0
     return promise
   }
+
+  search_country(search_item){
+    interface ApiResponse {
+      tracks: any
+      track_name: any
+      artist_name: any
+    }
+    let promise = new Promise((resolve, reject) => {
+      this.http.get<ApiResponse>(environment.base_url + environment.country+ search_item + environment.api_key).toPromise().then(response => {
+        response.tracks['track'].forEach(element => {
+          if (element.name && element.artist.name) {
+            let song = new Tracks(0, '', '', '')
+            this.rank += 1
+            song.rank = this.rank
+            song.track_name = element.name
+            song.artist_name = element.artist.name
+            let i_array = element.image
+            for (let i in i_array) {
+              if (i_array[i].size == 'extralarge') {
+                song.image_path = i_array[i]['#text']
+              }
+            }
+            this.tracks.push(song)
+            console.log('New Song')
+          }
+        })
+        resolve()
+      },
+        err => {
+          console.log("Nigga not found");
+          reject(err);
+        })
+    })
+    this.rank = 0
+    this.tracks.length = 0
+    return promise
+  }
 }
+
 
 

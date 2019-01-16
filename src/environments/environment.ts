@@ -4,8 +4,10 @@
 
 export const environment = {
   production: false,
-  base_url: ` https://api.musixmatch.com/ws/1.1/`,
-  api_key: `&apikey=d673c5d2a6ffc9e8b1eedbaf137810f3`
+  base_url: `http://ws.audioscrobbler.com/2.0/`,
+  api_key: `&api_key=a12259621990625ffd4cd961783ffe84&format=json`,
+  worldwide: `?method=chart.gettoptracks&page=1&limit=200`,
+  country: `?method=geo.gettoptracks&page=2&limit=100&country=`
 };
 
 /*
@@ -16,3 +18,4 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+

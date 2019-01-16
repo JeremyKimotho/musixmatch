@@ -1,0 +1,21 @@
+.content{
+  margin-top:7%;
+  background-color: white;
+  width:60%;
+  margin-left:auto;
+  margin-right:auto;
+  box-shadow: 0px 10px 19px 5px rgba(144, 148, 151, 0.64);
+}
+
+.nav {
+  background-color: black;
+  height: 60px;
+  margin-top: 14%;
+}
+
+nav h3 {
+  color: white;
+  padding-left: 15px;
+  font-family: 'Montserrat',
+    sans-serif;
+}

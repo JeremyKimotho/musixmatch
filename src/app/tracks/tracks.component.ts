@@ -8,6 +8,8 @@ import { SongsService } from '../search/songs.service';
   styleUrls: ['./tracks.component.css']
 })
 export class TracksComponent implements OnInit {
+  
+  title='musixmatch'
 
   tracks = [];
 

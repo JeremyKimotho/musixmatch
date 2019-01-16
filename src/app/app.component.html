@@ -1,11 +1,6 @@
 <div class="container">
   <div class="row">
-    <script>
-      function home() {
-        window.reload(true);
-      }
-    </script>
-    <span (click)='home()'><h2>{{header}}</h2></span>
+    <span onclick="document.location.reload(true)"><h2>{{header}}</h2></span>
     <h3>For the week of {{Jeremy|mondayFinder}}</h3>
   </div>
 </div>

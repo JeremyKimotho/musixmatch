@@ -19,3 +19,38 @@ nav h3 {
   font-family: 'Montserrat',
     sans-serif;
 }
+.credit{
+  text-align:right;
+}
+
+.icons{
+  height:3%;
+  width:3%;
+}
+
+#track_rank{
+  font-size:60px;
+  font-family: 'Heebo',
+  sans-serif;
+  text-align:center;
+}
+
+#track_images{
+  height:60%;
+  width:60%;
+}
+
+#track_name{
+  font-family: 'IBM Plex Sans',
+  sans-serif;
+  font-weight:bold;
+}
+
+#track_artist{
+  font-family: 'IBM Plex Sans',
+  sans-serif;
+}
+
+.song{
+  padding-bottom:20px;
+}

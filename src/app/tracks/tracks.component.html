@@ -1,17 +1,46 @@
 <div class="nav">
   <nav>
-    <h3>{{title}}</h3>
+    <span style='display:inline-block;'>
+      <h3>{{title}}</h3>
+      <!-- <img class='icons' src='../../assets/icons/argentina.png'> -->
+    </span>
+    
+    <h6></h6>
+    <h6></h6>
+    <h6></h6>
+    <h6></h6>
+    <h6></h6>
+    <h6></h6>
+    <h6></h6>
+    <h6></h6>
+    <h6></h6>
+    <h6></h6>
   </nav>
 </div>
 <div class="content">
   <div class="container">
     <div class="row">
       <div *ngFor="let track of tracks">
-        <p>Name:{{track.track_name}}</p>
-        <p>Artist:{{track.artist_name}}</p>
-        <p>Rank:{{track.rank}}</p>
-        <p>Image:{{track.image_path}}</p>
+        <div class="song">
+          <div class="row">
+            <div class="col-lg-1">
+              <h1 id='track_rank'>{{track.rank}}</h1>
+            </div>
+            <div class="col-lg-3">
+               <img src="{{track.image_path}}" id='track_images' alt="An image representing the artist">
+            </div>
+            <div class="col-lg-4">
+              <h3 id='track_name'>{{track.track_name}}</h3>
+              <h4 id='track_artist'>{{track.artist_name}}</h4>
+            </div>
+          </div> 
+        </div>
       </div>
     </div>
   </div>
 </div>
+<footer>
+  <div class='credit'>
+    Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+  </div>
+</footer>

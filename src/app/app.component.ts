@@ -8,4 +8,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Musixmatch';
   header = 'THE HOT 100'
+
+  // home(){
+  //   $window.location.reload();
+  // }
+
 }

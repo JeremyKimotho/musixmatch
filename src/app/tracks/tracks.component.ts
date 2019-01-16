@@ -13,6 +13,18 @@ export class TracksComponent implements OnInit {
 
   tracks = [];
 
+  argentina='argentina'
+  brazil='brazil'
+  china='china'
+  colombia='colombia'
+  cuba='cuba'
+  flag='united%20states'
+  india='india' 
+  japan='japan' 
+  kenya='kenya'
+  nigeria='nigeria'
+  sa='south%20africa'
+  uk='united%20kingdom'
   country=''
   
   constructor(private home: SongsService, private search: SongsService) { }
@@ -29,4 +41,9 @@ export class TracksComponent implements OnInit {
     this.search.search_country(search_item)
     this.tracks = this.search.tracks
   }
+
+  // test(){
+  //   this.search.search_country()
+  //   this.tracks = this.search.tracks
+  // }
 }

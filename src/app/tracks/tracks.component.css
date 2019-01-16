@@ -29,6 +29,10 @@ nav h3 {
   width:55%;
 }
 
+.icons:hover{
+  cursor:pointer;
+}
+
 #track_rank{
   font-size:60px;
   font-family: 'Heebo',

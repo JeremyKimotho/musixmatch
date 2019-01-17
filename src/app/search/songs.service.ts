@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Tracks } from '../tracks'
+import { resolve } from 'path';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,33 @@ export class SongsService {
 
   rank:number=0
 
+  video = ''
+
   constructor(private http: HttpClient) {
-   }
+  }
+
+  findVideo(title){
+    interface ApiResponse{
+      items:any
+    }
+    let promise = new Promise((resolve, reject) => {
+      this.http.get<ApiResponse>(environment.youtubeLink + title + environment.youtubeLink2).toPromise().then(response => {
+        response.items.forEach(element => {
+          this.video=element.id.videoId
+        })
+        resolve()
+      },
+        err => {
+          console.log("Video not found");
+          reject(err);
+        })
+    })
+    return promise
+  }
+
+  buildLink(id){
+    return 'http://www.youtube.com/watch?v=' + id
+  }
 
   default() {
     interface ApiResponse {
@@ -25,7 +51,7 @@ export class SongsService {
       this.http.get<ApiResponse>(environment.base_url + environment.worldwide + environment.api_key).toPromise().then(response => {
         response.tracks['track'].forEach(element => {
           if (element.name && element.artist.name) {
-            let song = new Tracks(0, '', '', '')
+            let song = new Tracks(0, '', '', '', '')
             this.rank += 1
             song.rank = this.rank
             song.track_name = element.name
@@ -36,6 +62,10 @@ export class SongsService {
                 song.image_path = i_array[i]['#text']
               }
             }
+            this.findVideo(element.name)
+            let id = this.video
+            song.video_id = this.buildLink(id)
+            console.log(song.video_id)
             this.tracks.push(song)
             console.log('New Song')
           }
@@ -62,7 +92,7 @@ export class SongsService {
       this.http.get<ApiResponse>(environment.base_url + environment.country+ search_item + environment.api_key).toPromise().then(response => {
         response.tracks['track'].forEach(element => {
           if (element.name && element.artist.name) {
-            let song = new Tracks(0, '', '', '')
+            let song = new Tracks(0, '', '', '','')
             this.rank += 1
             song.rank = this.rank
             song.track_name = element.name

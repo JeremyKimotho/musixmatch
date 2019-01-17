@@ -13,6 +13,8 @@ export class TracksComponent implements OnInit {
 
   tracks = [];
 
+  link ='http://www.youtube.com/watch?v='
+
   argentina='argentina'
   brazil='brazil'
   china='china'
@@ -42,8 +44,7 @@ export class TracksComponent implements OnInit {
     this.tracks = this.search.tracks
   }
 
-  // test(){
-  //   this.search.search_country()
-  //   this.tracks = this.search.tracks
-  // }
+  prepareLink(id){
+    return this.link+id
+  }
 }

@@ -10,12 +10,14 @@ This is an application where users may view the top 100 songs for the week world
 * easy-to-understand
 * format
 {Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? Do I need to install any dependencies? How should I set up my databases? Is there other code this app depends on?}
+## Known Bugs
+Currently though I have figured out a way to provide youtube links, the quota is making it impossible for me to the service for more than about 10 minutes before I'm locked out of the database. Searching for a solution or alternative then will publish website.
 ## User Stories 
 | Target | Accomplished? |
 | --- | --- |
 | A user should view the charts | True |
 | A user should view the charts around the world| True |
-| A user should view snippets of any song displayed | Tralse |
+| A user should view youtube video of any song displayed | Tralse |
 ## Technologies Used
 * HTML
 * CSS

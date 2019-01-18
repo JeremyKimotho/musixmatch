@@ -13,29 +13,33 @@ export class SongsService {
 
   rank:number=0
 
-  video = ''
+  video=[]
 
   constructor(private http: HttpClient) {
   }
 
-  findVideo(title){
-    interface ApiResponse{
-      items:any
-    }
-    let promise = new Promise((resolve, reject) => {
-      this.http.get<ApiResponse>(environment.youtubeLink + title + environment.youtubeLink2).toPromise().then(response => {
-        response.items.forEach(element => {
-          this.video=element.id.videoId
-        })
-        resolve()
-      },
-        err => {
-          console.log("Video not found");
-          reject(err);
-        })
-    })
-    return promise
-  }
+  // findVideo(title){
+  //   interface ApiResponse{
+  //     items:any
+  //   }
+  //   let arr=title.split('')
+  //   arr.join('%20')
+  //   title=arr[0]
+  //   let promise = new Promise((resolve, reject) => {
+  //     this.http.get<ApiResponse>(environment.youtubeLink + title + environment.youtubeLink2).toPromise().then(response => {
+  //       response['items'].forEach(element => {
+  //         let id = element.id.videoId
+  //         this.video.push(id) 
+  //       })
+  //       resolve()
+  //     },
+  //       err => {
+  //         console.log("Video not found");
+  //         reject(err);
+  //       })
+  //   })
+  //   return promise
+  // }
 
   buildLink(id){
     return 'http://www.youtube.com/watch?v=' + id
@@ -62,11 +66,12 @@ export class SongsService {
                 song.image_path = i_array[i]['#text']
               }
             }
-            this.findVideo(element.name)
-            let id = this.video
+            // this.findVideo(element.name)
+            let id = this.video[this.rank-1]
             song.video_id = this.buildLink(id)
             console.log(song.video_id)
             this.tracks.push(song)
+            console.log(element.name)
             console.log('New Song')
           }
         })
@@ -77,6 +82,7 @@ export class SongsService {
           reject(err);
         })
     })
+    this.video.length=0
     this.rank=0
     this.tracks.length = 0
     return promise
